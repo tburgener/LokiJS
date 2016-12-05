@@ -275,6 +275,184 @@ describe('loki', function () {
 
   });
 
+  // We only support dot notation involving array when
+  // the leaf property is the array.  This verifies that functionality
+  describe('dot notation across leaf object array', function() {
+    it('works', function () {
+      var dna = db.addCollection('dnacoll');
+
+      dna.insert({
+        id: 1,
+        children: [{
+          someProperty: 11
+        }]
+      });
+
+      dna.insert({
+        id: 2,
+        children: [{
+          someProperty: 22
+        }]
+      });
+
+      dna.insert({
+        id: 3,
+        children: [{
+          someProperty: 33
+        }, {
+          someProperty: 22
+        }]
+      });
+
+      dna.insert({
+        id: 4,
+        children: [{
+          someProperty: 11
+        }]
+      });
+
+      dna.insert({
+        id: 5,
+        children: [{
+          missing: null
+        }]
+      });
+
+      dna.insert({
+        id: 6,
+        children: [{
+          someProperty: null
+        }]
+      });
+
+      var results = dna.find({'children.someProperty': 33 });
+      expect(results.length).toEqual(1);
+
+      results = dna.find({'children.someProperty': 11 });
+      expect(results.length).toEqual(2);
+
+      results = dna.find({'children.someProperty': 22});
+      expect(results.length).toEqual(2);
+    });
+  });
+
+
+  describe('dot notation terminating at leaf array', function() {
+    it('works', function() {
+      var dna = db.addCollection('dnacoll');
+
+      dna.insert({
+        "relations" : {
+          "ids": [379]
+        }
+      });
+
+      dna.insert({
+        "relations" : {
+          "ids": [12, 379]
+        }
+      });
+      
+      dna.insert({
+        "relations" : {
+          "ids": [111]
+        }
+      });
+      
+      var results = dna.find({
+        'relations.ids' : { $contains: 379 }
+      });
+
+      expect(results.length).toEqual(2);
+    });
+  });
+
+  describe('dot notation across child array', function() {
+    it('works', function () {
+      var dna = db.addCollection('dnacoll');
+
+      dna.insert({
+        id: 1,
+        children: [{
+          id: 11,
+          someArray: [{
+            someProperty: 111
+          }]
+        }]
+      });
+
+      dna.insert({
+        id: 2,
+        children: [{
+          id: 22,
+          someArray: [{
+            someProperty: 222
+          }]
+        }]
+      });
+
+      dna.insert({
+        id: 3,
+        children: [{
+          id: 33,
+          someArray: [{
+            someProperty: 333
+          }, {
+            someProperty: 222
+          }]
+        }]
+      });
+
+      dna.insert({
+        id: 4,
+        children: [{
+          id: 44,
+          someArray: [{
+            someProperty: 111
+          }]
+        }]
+      });
+
+      dna.insert({
+        id: 5,
+        children: [{
+          id: 55,
+          someArray: [{
+            missing: null
+          }]
+        }]
+      });
+
+      dna.insert({
+        id: 6,
+        children: [{
+          id: 66,
+          someArray: [{
+            someProperty: null
+          }]
+        }]
+      });
+
+      var results = dna.find({'children.someArray.someProperty': 333});
+      expect(results.length).toEqual(1);
+
+      results = dna.find({'children.someArray.someProperty': 111});
+      expect(results.length).toEqual(2);
+
+      results = dna.find({'children.someArray.someProperty': 222});
+      expect(results.length).toEqual(2);
+
+      results = dna.find({'$and': [{'id': 3}, {'children.someArray.someProperty': 222}]});
+      expect(results.length).toEqual(1);
+
+      results = dna.find({'$and': [{'id': 1}, {'children.someArray.someProperty': 222}]});
+      expect(results.length).toEqual(0);
+
+      results = dna.find({'$or': [{'id': 1}, {'children.someArray.someProperty': 222}]});
+      expect(results.length).toEqual(3);
+    });
+  });
+
   describe('calculateRange', function () {
     it('works', function () {
       var eic = db.addCollection('eic');
@@ -328,16 +506,16 @@ describe('loki', function () {
 
       // ranges are order of sequence in index not data array positions
 
-      var range = rset.calculateRange('$eq', 'testid', 22);
+      var range = eic.calculateRange('$eq', 'testid', 22);
       expect(range).toEqual([6, 6]);
 
-      range = rset.calculateRange('$eq', 'testid', 1);
+      range = eic.calculateRange('$eq', 'testid', 1);
       expect(range).toEqual([0, 1]);
 
-      range = rset.calculateRange('$eq', 'testid', 7);
+      range = eic.calculateRange('$eq', 'testid', 7);
       expect(range).toEqual([0, -1]);
 
-      range = rset.calculateRange('$gte', 'testid', 23);
+      range = eic.calculateRange('$gte', 'testid', 23);
       expect(range).toEqual([7, 7]);
 
       // reference this new record for future evaluations
@@ -348,28 +526,28 @@ describe('loki', function () {
       });
 
       // test when all records are in range
-      range = rset.calculateRange('$lt', 'testid', 25);
+      range = eic.calculateRange('$lt', 'testid', 25);
       expect(range).toEqual([0, 8]);
-      range = rset.calculateRange('$lte', 'testid', 25);
+      range = eic.calculateRange('$lte', 'testid', 25);
       expect(range).toEqual([0, 8]);
-      range = rset.calculateRange('$gt', 'testid', 0);
+      range = eic.calculateRange('$gt', 'testid', 0);
       expect(range).toEqual([0, 8]);
-      range = rset.calculateRange('$gte', 'testid', 0);
+      range = eic.calculateRange('$gte', 'testid', 0);
       expect(range).toEqual([0, 8]);
 
-      range = rset.calculateRange('$gte', 'testid', 23);
+      range = eic.calculateRange('$gte', 'testid', 23);
       expect(range).toEqual([7, 8]);
 
-      range = rset.calculateRange('$gte', 'testid', 24);
+      range = eic.calculateRange('$gte', 'testid', 24);
       expect(range).toEqual([0, -1]);
 
-      range = rset.calculateRange('$lte', 'testid', 5);
+      range = eic.calculateRange('$lte', 'testid', 5);
       expect(range).toEqual([0, 2]);
 
-      range = rset.calculateRange('$lte', 'testid', 1);
+      range = eic.calculateRange('$lte', 'testid', 1);
       expect(range).toEqual([0, 1]);
 
-      range = rset.calculateRange('$lte', 'testid', -1);
+      range = eic.calculateRange('$lte', 'testid', -1);
       expect(range).toEqual([0, -1]);
 
       // add another index on string property
@@ -378,10 +556,10 @@ describe('loki', function () {
         'testString': 'asdf'
       }); // force index to be built
 
-      range = rset.calculateRange('$lte', 'testString', 'ggg');
+      range = eic.calculateRange('$lte', 'testString', 'ggg');
       expect(range).toEqual([0, 2]); // includes record added in middle
 
-      range = rset.calculateRange('$gte', 'testString', 'm');
+      range = eic.calculateRange('$gte', 'testString', 'm');
       expect(range).toEqual([4, 8]); // offset by 1 because of record in middle
 
       // add some float range evaluations
@@ -390,23 +568,25 @@ describe('loki', function () {
         'testFloat': '1.1'
       }); // force index to be built
 
-      range = rset.calculateRange('$lte', 'testFloat', 1.2);
+      range = eic.calculateRange('$lte', 'testFloat', 1.2);
       expect(range).toEqual([0, 0]);
 
-      range = rset.calculateRange('$eq', 'testFloat', 1.111);
+      range = eic.calculateRange('$eq', 'testFloat', 1.111);
       expect(range).toEqual([0, -1]);
 
-      range = rset.calculateRange('$eq', 'testFloat', 8.2);
+      range = eic.calculateRange('$eq', 'testFloat', 8.2);
       expect(range).toEqual([7, 7]); // 8th pos
 
-      range = rset.calculateRange('$gte', 'testFloat', 1.0);
+      range = eic.calculateRange('$gte', 'testFloat', 1.0);
       expect(range).toEqual([0, 8]); // 8th pos
     })
   });
 
-  describe('indexLifecycle', function () {
+  describe('lazy indexLifecycle', function () {
     it('works', function () {
-      var ilc = db.addCollection('ilc');
+      var ilc = db.addCollection('ilc', {
+        adaptiveBinaryIndices: false
+      });
 
       var hasIdx = ilc.binaryIndices.hasOwnProperty('testid');
       expect(hasIdx).toEqual(false);

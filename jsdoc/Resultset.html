@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="Resultset"><span class="type-signature"></span>new Resultset<span class="signature">(collection, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Resultset"><span class="type-signature"></span>new Resultset<span class="signature">(collection, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -72,6 +72,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -97,6 +99,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -119,6 +129,16 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -259,7 +279,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1421">line 1421</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2096">line 2096</a>
     </li></ul></dd>
     
 
@@ -286,10 +306,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>mycollection.chain()
-     .find({ 'doors' : 4 })
-     .where(function(obj) { return obj.name === 'Toyota' })
-     .data();</code></pre>
+    <pre class="prettyprint"><code>mycollection.chain()     .find({ 'doors' : 4 })     .where(function(obj) { return obj.name === 'Toyota' })     .data();</code></pre>
 
 
 
@@ -355,7 +372,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1548">line 1548</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2223">line 2223</a>
     </li></ul></dd>
     
 
@@ -482,7 +499,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1703">line 1703</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2378">line 2378</a>
     </li></ul></dd>
     
 
@@ -531,10 +548,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// to sort by age and then name (both ascending)
-rs.compoundsort(['age', 'name']);
-// to sort by age (ascending) and then by name (descending)
-rs.compoundsort(['age', ['name', true]);</code></pre>
+    <pre class="prettyprint"><code>// to sort by age and then name (both ascending)rs.compoundsort(['age', 'name']);// to sort by age (ascending) and then by name (descending)rs.compoundsort(['age', ['name', true]);</code></pre>
 
 
 
@@ -594,7 +608,7 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1533">line 1533</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2208">line 2208</a>
     </li></ul></dd>
     
 
@@ -698,7 +712,7 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2303">line 2303</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2841">line 2841</a>
     </li></ul></dd>
     
 
@@ -751,7 +765,7 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
 
     
 
-    <h4 class="name" id="data"><span class="type-signature"></span>data<span class="signature">(options)</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id="data"><span class="type-signature"></span>data<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {array}</span></h4>
 
     
 
@@ -782,6 +796,8 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -806,6 +822,16 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -925,7 +951,7 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2322">line 2322</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2860">line 2860</a>
     </li></ul></dd>
     
 
@@ -978,7 +1004,7 @@ rs.compoundsort(['age', ['name', true]);</code></pre>
 
     
 
-    <h4 class="name" id="eqJoin"><span class="type-signature"></span>eqJoin<span class="signature">(joinData, leftJoinKey, rightJoinKey, mapFun)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
+    <h4 class="name" id="eqJoin"><span class="type-signature"></span>eqJoin<span class="signature">(joinData, leftJoinKey, rightJoinKey, mapFun<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
 
     
 
@@ -1010,6 +1036,8 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1034,6 +1062,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -1061,6 +1097,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1087,6 +1131,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1109,6 +1161,16 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -1154,7 +1216,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2449">line 2449</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2986">line 2986</a>
     </li></ul></dd>
     
 
@@ -1207,7 +1269,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
 
     
 
-    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">(query, firstOnly)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
+    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">(query, firstOnly<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
 
     
 
@@ -1238,6 +1300,8 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1263,6 +1327,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1285,6 +1357,16 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -1330,7 +1412,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1968">line 1968</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2493">line 2493</a>
     </li></ul></dd>
     
 
@@ -1484,7 +1566,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1496">line 1496</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2171">line 2171</a>
     </li></ul></dd>
     
 
@@ -1660,7 +1742,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2431">line 2431</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2968">line 2968</a>
     </li></ul></dd>
     
 
@@ -1813,7 +1895,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1515">line 1515</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2190">line 2190</a>
     </li></ul></dd>
     
 
@@ -1917,7 +1999,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2409">line 2409</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2946">line 2946</a>
     </li></ul></dd>
     
 
@@ -1970,7 +2052,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
 
     
 
-    <h4 class="name" id="simplesort"><span class="type-signature"></span>simplesort<span class="signature">(propname, isdesc)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
+    <h4 class="name" id="simplesort"><span class="type-signature"></span>simplesort<span class="signature">(propname, isdesc<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
 
     
 
@@ -2002,6 +2084,8 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -2027,6 +2111,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -2049,6 +2141,16 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2094,7 +2196,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1669">line 1669</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2344">line 2344</a>
     </li></ul></dd>
     
 
@@ -2247,7 +2349,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1642">line 1642</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2317">line 2317</a>
     </li></ul></dd>
     
 
@@ -2296,11 +2398,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>rslt.sort(function(obj1, obj2) {
-     if (obj1.name === obj2.name) return 0;
-     if (obj1.name > obj2.name) return 1;
-     if (obj1.name &lt; obj2.name) return -1;
-   });</code></pre>
+    <pre class="prettyprint"><code>rslt.sort(function(obj1, obj2) {     if (obj1.name === obj2.name) return 0;     if (obj1.name > obj2.name) return 1;     if (obj1.name &lt; obj2.name) return -1;   });</code></pre>
 
 
 
@@ -2309,7 +2407,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
 
     
 
-    <h4 class="name" id="transform"><span class="type-signature"></span>transform<span class="signature">(transform, parameters)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
+    <h4 class="name" id="transform"><span class="type-signature"></span>transform<span class="signature">(transform, parameters<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Resultset.html">Resultset</a>}</span></h4>
 
     
 
@@ -2340,6 +2438,8 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -2368,6 +2468,14 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -2390,6 +2498,16 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2435,7 +2553,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line1558">line 1558</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2233">line 2233</a>
     </li></ul></dd>
     
 
@@ -2588,7 +2706,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2378">line 2378</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2915">line 2915</a>
     </li></ul></dd>
     
 
@@ -2741,7 +2859,7 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2237">line 2237</a>
+        <a href="lokijs.js.html">lokijs.js</a>, <a href="lokijs.js.html#line2775">line 2775</a>
     </li></ul></dd>
     
 
@@ -2805,13 +2923,13 @@ eqJoin expects the right join key values to be unique.  Otherwise left data will
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="DynamicView.html">DynamicView</a></li><li><a href="Loki.html">Loki</a></li><li><a href="LokiEventEmitter.html">LokiEventEmitter</a></li><li><a href="LokiFsAdapter.html">LokiFsAdapter</a></li><li><a href="LokiIndexedAdapter.html">LokiIndexedAdapter</a></li><li><a href="LokiLocalStorageAdapter.html">LokiLocalStorageAdapter</a></li><li><a href="Resultset.html">Resultset</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-Autoupdating Collections.html">Autoupdating Collections</a></li><li><a href="tutorial-Changes API.html">Changes API</a></li><li><a href="tutorial-Collection Transforms.html">Collection Transforms</a></li><li><a href="tutorial-Indexing and Query performance.html">Indexing and Query performance</a></li><li><a href="tutorial-Loki Angular.html">Loki Angular</a></li><li><a href="tutorial-Persistence Adapters.html">Persistence Adapters</a></li><li><a href="tutorial-Query Examples.html">Query Examples</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="DynamicView.html">DynamicView</a></li><li><a href="Loki.html">Loki</a></li><li><a href="LokiEventEmitter.html">LokiEventEmitter</a></li><li><a href="LokiFsAdapter.html">LokiFsAdapter</a></li><li><a href="LokiFsStructuredAdapter.html">LokiFsStructuredAdapter</a></li><li><a href="LokiIndexedAdapter.html">LokiIndexedAdapter</a></li><li><a href="LokiLocalStorageAdapter.html">LokiLocalStorageAdapter</a></li><li><a href="LokiMemoryAdapter.html">LokiMemoryAdapter</a></li><li><a href="LokiPartitioningAdapter.html">LokiPartitioningAdapter</a></li><li><a href="Resultset.html">Resultset</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-Autoupdating Collections.html">Autoupdating Collections</a></li><li><a href="tutorial-Changes API.html">Changes API</a></li><li><a href="tutorial-Collection Transforms.html">Collection Transforms</a></li><li><a href="tutorial-Indexing and Query performance.html">Indexing and Query performance</a></li><li><a href="tutorial-Loki Angular.html">Loki Angular</a></li><li><a href="tutorial-Persistence Adapters.html">Persistence Adapters</a></li><li><a href="tutorial-Query Examples.html">Query Examples</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Apr 11 2016 21:06:49 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Dec 03 2016 17:48:01 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
